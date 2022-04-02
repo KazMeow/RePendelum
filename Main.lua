@@ -131,3 +131,27 @@ for i,v in pairs(Scripts) do
 	end)
 	NewClone.Parent = Elements.Scroll
 end
+
+task.spawn(function()
+	local function randomString()
+		local length = math.random(10,20)
+		local array = {}
+		for i = 1, length do
+			array[i] = string.char(math.random(32, 126))
+		end
+		return table.concat(array)
+	end
+
+	GUI.Name = randomString()
+	if syn then
+		syn.protect_gui(GUI)
+		GUI.Parent = game:GetService("CoreGui")
+	elseif get_hidden_gui or gethui then
+		local hiddenUI = get_hidden_gui or gethui
+		GUI.Parent = hiddenUI()
+	elseif game:GetService("CoreGui"):FindFirstChild('RobloxGui') then
+		GUI.Parent = game:GetService("CoreGui").RobloxGui
+	else
+		GUI.Parent = game:GetService("CoreGui")
+	end
+end)
