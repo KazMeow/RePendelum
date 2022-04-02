@@ -1,12 +1,13 @@
+local getsynassetfromurl = loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/RePendelum/main/getsynassetfromurl.lua"))()
 local Scripts = {
 	["NAMEHERE"] = {
 		["Link"] = "rawlinkhere",
-		["Image"] = getsynassetfromurl("IMAGEURLHERE"),
+		["Image"] = getsynassetfromurl("https://cdn.discordapp.com/attachments/308098766987329536/959809672372711484/unknown.png"),
 		["HatID"] = "id1,id2,etc."
 	},
 }
 
-local GUI = game:GetObjects("rbxassetid://9259450097")[1]--script.Parent
+local GUI = game:GetObjects("rbxassetid://9260677580")[1]--script.Parent
 local MainFrame = GUI.Frame
 local Elements = MainFrame.Elements
 
@@ -14,34 +15,6 @@ local Sine = 0
 local Toggle = true
 local Selected = ""
 local setclipboard = setclipboard or print
-
-local function getsynassetfromurl(URL)
-	local getsynasset, request = getsynasset or getcustomasset or error('invalid attempt to \'getsynassetfromurl\' (custom asset retrieval function expected)'), (syn and syn.request) or (http and http.request) or (request) or error('invalid attempt to \'getsynassetfromurl\' (http request function expected)')
-	local Extension, Types, URL = '', {'.png', '.webm'}, assert(tostring(type(URL)) == 'string', 'invalid argument #1 to \'getsynassetfromurl\' (string [URL] expected, got '..tostring(type(URL))..')') and URL or nil
-	local Response, TempFile = request({
-		Url = URL,
-		Method = 'GET'
-	})
-
-	if Response.StatusCode == 200 then
-		Extension = Response.Body:sub(2, 4) == 'PNG' and '.png' or Response.Body:sub(25, 28) == 'webm' and '.webm' or nil
-	end
-
-	if Response.StatusCode == 200 and (Extension and table.find(Types, Extension)) then
-		for i = 1, 15 do
-			local Letter, Lower = string.char(math.random(65, 90)), math.random(1, 5) == 3 and true or false
-			TempFile = (not TempFile and '' .. (Lower and Letter:lower() or Letter)) or (TempFile .. (Lower and Letter:lower() or Letter)) or nil
-		end
-
-		writefile(TempFile..Extension, Response.Body)
-
-		return getsynasset(TempFile..Extension)
-	elseif Response.StatusCode ~= 200 or not Extension then
-		warn('unexpected \'getsynassetfromurl\' Status Error: ' .. Response.StatusMessage .. ' ('..URL..')')
-	elseif not (Extension) then
-		warn('unexpected \'getsynassetfromurl\' Error: (PNG or webm file expected)')
-	end
-end
 
 local function reanimate()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/CenteredSniper/Kenzen/master/newnetlessreanimate.lua"))()
@@ -70,7 +43,8 @@ end)
 Elements.CopyCredits.Activated:Connect(function()
 	setclipboard[[Original Developer - https://discord.id/?prefill=801256997261017100
 Remake Main Developer - https://discord.id/?prefill=806621844291584001
-Convert Developers - https://discord.id/?prefill=786897804664635400,https://discord.id/?prefill=307781359244541953]]
+Convert Developers - https://discord.id/?prefill=786897804664635400,https://discord.id/?prefill=307781359244541953
+getsynassetfromurl function - https://discord.id/?prefill=649302696473395200]]
 end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
@@ -141,7 +115,7 @@ task.spawn(function()
 		end
 		return table.concat(array)
 	end
-
+	Elements.Pendelum.Pendelum.ZIndex = 3
 	GUI.Name = randomString()
 	if syn then
 		syn.protect_gui(GUI)
