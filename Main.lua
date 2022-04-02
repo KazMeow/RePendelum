@@ -1,7 +1,7 @@
 local Scripts = {
 	["NAMEHERE"] = {
 		["Link"] = "rawlinkhere",
-		["Image"] = "",--getsynassetfromurl("IMAGEURLHERE"),
+		["Image"] = getsynassetfromurl("IMAGEURLHERE"),
 		["HatID"] = "id1,id2,etc."
 	},
 }
