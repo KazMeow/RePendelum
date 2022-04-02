@@ -6,7 +6,7 @@ local Scripts = {
 	},
 }
 
-local GUI = game:GetObjects("rbxassetid://9259228025")[1]--script.Parent
+local GUI = game:GetObjects("rbxassetid://9259450097")[1]--script.Parent
 local MainFrame = GUI.Frame
 local Elements = MainFrame.Elements
 
