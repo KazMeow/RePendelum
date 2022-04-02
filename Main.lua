@@ -98,6 +98,7 @@ for i,v in pairs(Scripts) do
 			reanimate()
 			loadstring(game:HttpGet(v["Link"]))()
 			Selected = ""
+			Elements.Preview.Image = ""
 		else
 			Selected = i
 			Elements.Preview.Image = v["Image"]
